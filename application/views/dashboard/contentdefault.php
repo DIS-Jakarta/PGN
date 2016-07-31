@@ -2,8 +2,9 @@
   <div class="main-inner">
     <div class="container">
       <div class="row">
-		<div style="margin: auto;width: 20%;"><img src="<? echo site_url();?>static/images/pgn.png"></div>
-		<div style="margin: auto;width: 38%;text-align-last: center;"><p style="font-size:16px;">Selamat datang di website Sistem Informasi Manajemen PGN</p></div>
+		<div id="over">
+		<span class="Centerer"></span>
+		<img src="<? echo site_url();?>static/images/pgn.png" class="Centered"></div>
 		</div>
       <!-- /row --> 
     </div>

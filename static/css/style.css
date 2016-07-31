@@ -116,7 +116,7 @@ textarea {
 */
 
 .subnavbar {
-    	margin-bottom: 2.5em;
+    	/*margin-bottom: 2.5em;*/
     }
     
 .subnavbar-inner {
@@ -1294,5 +1294,25 @@ color: #333;
 		width: 200px;
 	}
 	
+}
+
+.Centerer
+{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.Centered
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#over
+{
+    position:absolute;
+    width:90%;
+    text-align: center; /*handles the horizontal centering*/
 }
 

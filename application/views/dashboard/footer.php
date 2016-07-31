@@ -1,4 +1,4 @@
-<div class="footer-absolute">Copyright @ PGN 2016</div>
+<div class="footer-absolute" style="background-color:#00a5e9;">Copyright @ PGN 2016</div>
 <!-- /extra -->
 <!-- Le javascript
 ================================================== --> 

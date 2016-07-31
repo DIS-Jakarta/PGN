@@ -21,21 +21,21 @@
 
 <body>
 
-<div class="account-container" style ="padding-top:5%;width: 20%;margin: auto;">
+<div class="account-container" style ="padding-top:10%;margin: auto;">
 	
 	<div class="content clearfix">
 		
-		<form action="#" method="post">
+		<form action="<? echo site_url();?>Dashboard/verifylogin" method="post" style="text-align:center;">
 		
-			<h1>Member Login</h1>		
+			<div><img src="<? echo site_url();?>static/images/pgn.png" width="50px;"></div>		
 			
 			<div class="login-fields">
 				
-				<p>Please provide your details</p>
+				<!--<div><img src="<? echo site_url();?>static/images/pgn.png" width="50px;"></div>-->
 				
 				<div class="field">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" value="" placeholder="Username" class="login username-field" />
+					<label for="userid">Username</label>
+					<input type="text" id="userid" name="userid" value="" placeholder="userid" class="login username-field" />
 				</div> <!-- /field -->
 				
 				<div class="field">
@@ -46,7 +46,7 @@
 			</div> <!-- /login-fields -->
 			
 			<div class="login-actions">				
-				<button class="button btn btn-success btn-large">Sign In</button>
+				<button class="button btn btn-success btn-large" style="background-color: #00a5e9;">Sign In</button>
 				
 			</div> <!-- .actions -->
 			
