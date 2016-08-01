@@ -332,9 +332,9 @@ textarea {
 .footer-absolute {
 	height:20px;
 	width:99.3%;
-	position:absolute;
+	/*position:absolute;
 	bottom:0;
-	left:0;
+	left:0;*/
 	padding-bottom:15px;
 	padding-top:10px;
 	padding-left:10px;
@@ -1314,5 +1314,13 @@ color: #333;
     position:absolute;
     width:90%;
     text-align: center; /*handles the horizontal centering*/
+}
+
+.content-icon
+{
+	max-width:80%;
+	max-height:80%;
+	display:block;
+    margin:auto;
 }
 
