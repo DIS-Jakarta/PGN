@@ -36,6 +36,10 @@ class Dashboard extends CI_Controller {
 	{
 		 if($this->session->userdata('logged_in'))
 	   {
+		$this->data2['menu_dashboard'] = "class=\"active\"";
+		$this->data2['menu_user'] = "class=\"dropdown\"";
+		$this->data2['menu_data'] = "class=\"dropdown\"";
+		$this->data2['menu_formula'] = "class=\"dropdown\"";
 		$this->load->view('dashboard/header', $this->data);
 		$this->load->view('dashboard/navbar', $this->data2);
 		$this->load->view('dashboard/contentdefault');

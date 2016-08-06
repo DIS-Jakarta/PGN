@@ -1,18 +1,18 @@
 <div class="main" style="border-bottom:0px;padding-top:20px;padding-bottom:0;">
   <div class="main-inner">
     <div class="container">
-      <div class="row">
-	  <div style="float:left;">
-		<div><img src="<? echo site_url();?>static/images/silhouette-user.png" class="content-icon"></div>
-		<div style="margin: auto;width: 38%;text-align-last: center;"><p style="font-size:16px;">Selamat datang di website Sistem Informasi Manajemen PGN</p></div>
+      <div class="row" style="padding-bottom:60px;padding-top:30px;">
+	  <div class="div-content-icon" >
+		<div><img src="<? echo site_url();?>static/images/silhouette-user.png" class="img-content-icon"></div>
+		<div style="text-align: center;"><p style="font-size:16px;">Users</p></div>
 		</div>
-		 <div style="float:left;">
-		<div><img src="<? echo site_url();?>static/images/silhouette-user.png" class="content-icon"></div>
-		<div style="text-align-last: center;"><p style="font-size:16px;">Selamat datang di website Sistem Informasi Manajemen PGN</p></div>
+		 <div class="div-content-icon" >
+		<div><img src="<? echo site_url();?>static/images/silhouette-user.png" class="img-content-icon" ></div>
+		<div style="text-align: center;"><p style="font-size:16px;">Group Users</p></div>
 		</div>
-		 <div>
-		<div><img src="<? echo site_url();?>static/images/silhouette-user.png" class="content-icon"></div>
-		<div style="text-align-last: center;"><p style="font-size:16px;">Selamat datang di website Sistem Informasi Manajemen PGN</p></div>
+		 <div class="div-content-icon" >
+		<div><img src="<? echo site_url();?>static/images/silhouette-user.png" class="img-content-icon"></div>
+		<div style="text-align: center;"><p style="font-size:16px;">Dummy</p></div>
 		</div>
       <!-- /row --> 
     </div>

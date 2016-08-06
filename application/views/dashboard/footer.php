@@ -33,7 +33,7 @@
 
         }
 
-        var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
+        //var myLine = new Chart(document.getElementById("area-chart").getContext("2d")).Line(lineChartData);
 
 
         var barChartData = {
@@ -130,6 +130,27 @@
           ]
         });
       });
+	  
+	  function clickmenu(x)
+	  {
+		  $('menu-dashboard').removeClass("active");
+		  $('menu-user').removeClass("active");
+		  $('menu-data').removeClass("active");
+		  $('menu-formula').removeClass("active");
+		  
+		  $('#' + x).addClass("active");
+		  
+	  }
+	  
+	  $('.dropdown-toggle').hover(function(){
+	  $('.dropdown-menu').css('display','inline-block')}, function() {
+    $('.dropdown-menu').css( 'display','none' );;
+})
+
+$('.dropdown-menu').hover(function(){
+	  $('.dropdown-menu').css('display','inline-block')}, function() {
+    $('.dropdown-menu').css( 'display','none' );;
+	})  
     </script><!-- /Calendar -->
 </body>
 </html>
