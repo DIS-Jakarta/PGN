@@ -3,10 +3,21 @@
 <!-- Le javascript
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="<?php echo site_url() ?>static/js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript">
+	var $j = jQuery.noConflict(true);
+	</script>
 <script src="<?php echo site_url() ?>static/js/excanvas.min.js"></script> 
 <script src="<?php echo site_url() ?>static/js/chart.min.js" type="text/javascript"></script> 
 <script src="<?php echo site_url() ?>static/js/bootstrap.js"></script>
+<script type="text/javascript" src="<? echo site_url();?>static/js/jquery.equalHeight.js"></script>
+<script src="<? echo site_url();?>static/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<? echo site_url();?>static/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="<? echo site_url();?>static/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<? echo site_url();?>static/js/jquery.maskMoney.min.js" type="text/javascript"></script>
+<script src="<? echo site_url();?>static/js/dataTables.fixedColumns.min.js" type="text/javascript"></script>
+<script src="<? echo site_url();?>static/js/jquery.tabletojson.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript" src="<?php echo site_url() ?>static/js/full-calendar/fullcalendar.min.js"></script>
  
 <script src="<?php echo site_url() ?>static/js/base.js"></script> 
@@ -171,6 +182,61 @@
 	  $('.dropdown-menu3').css('display','inline-block')}, function() {
     $('.dropdown-menu3').css( 'display','none' );;
 	})  
+	
+	table = $('#table').DataTable({ 
+
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('Items/select')?>",
+            "type": "POST",
+			<?php 
+			$cond = "";
+			if(isset($condition))
+			{
+				$cond = $condition;
+			}
+			
+			if(isset($tablename)){
+			echo '
+			"data": {
+			"tablename" : "' . $tablename . '",
+			"fields" : "' . $fields . '",
+			"keyfields" : "' . $keyfields . '",
+			"menuid" : "' . $menuid . '",
+			"condition" : "' . $cond . '"
+			},';
+			}
+			?>			
+			
+            
+        },
+
+        //Set column definition initialisation properties.
+
+		fixedHeader: true,
+		scrollY:        340,
+		scrollCollapse: true,
+		fixedColumns: true,
+		scrollX:        true,
+		"columnDefs": [
+        { 
+          "targets": [ -1 ], //last column
+          "orderable": false, //set not orderable
+		  <?php 
+		  // if(isset($tablename))
+		  // {
+			  // if($tablename == "reff_itemss"){
+				// echo '"visible" : false,';
+			  // }
+		  // }?>
+        }
+		
+        ]
+		
+      });
 
     </script><!-- /Calendar -->
 </body>

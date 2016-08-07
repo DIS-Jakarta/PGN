@@ -52,22 +52,22 @@ class Users extends CI_Controller {
 	   }
 		 $data3['Items'] = $this->Content->select($this->data['tablename'],null,null,$this->data['keyfields']);
 		$this->data2['menu_dashboard'] = "";
-		$this->data2['menu_user'] = "class=\"active\"";
-		$this->data2['menu_data'] = "";
-		$this->data2['menu_formula'] = "";
-		$this->load->view('home/header', $this->data);
-		$this->load->view('home/navbar', $this->data2);
-		$this->load->view('home/contentuser', $data3);
-		$this->load->view('home/footer');
+		$this->data2['menu_user'] = "class=\"dropdown active\"";
+		$this->data2['menu_data'] = "class=\"dropdown\"";
+		$this->data2['menu_formula'] = "class=\"dropdown\"";
+		$this->load->view('dashboard/header', $this->data);
+		$this->load->view('dashboard/navbar', $this->data2);
+		$this->load->view('dashboard/contentuser', $data3);
+		$this->load->view('dashboard/footer');
 	   } 
 	   else
 	   {
 		echo '<script type="text/javascript">alert("Harap login terlebih dahulu."); </script>';
 		 //If no session, redirect to login page
-	    $this->load->view('home/header', );
-		$this->load->view('home/navbar', $this->data2);
-		$this->load->view('home/contentuser', $data3);
-		$this->load->view('home/footer');
+	    $this->load->view('dashboard/header');
+		$this->load->view('dashboard/navbar');
+		$this->load->view('dashboard/contentuser');
+		$this->load->view('dashboard/footer');
 	   } 	
 	}
 	

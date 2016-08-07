@@ -43,7 +43,7 @@
         <li id="menu-dashboard" ' . $menu_dashboard . ' ><a href="' . site_url() . '"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
         <li id="menu-user" ' . $menu_user . ' ><a href="javascript:;" id="dropdown-toggle" ><i class="icon-user-md"></i><span>Manajemen User</span> </a> 
 		          <ul class="dropdown-menu">
-            <li><a href="#">User</a></li>
+            <li><a href="' . site_url() . 'Users/User">User</a></li>
             <li><a href="#">Group User</a></li>
 			</ul>
 			</li>
