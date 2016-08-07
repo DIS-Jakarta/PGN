@@ -13,7 +13,7 @@ class Users extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('session');
 		$this->load->model('user','',TRUE);
-		//$this->load->model('Content','',TRUE);
+		$this->load->model('Content','',TRUE);
 		
 		if($this->session->userdata('logged_in'))
 	   {
@@ -32,25 +32,53 @@ class Users extends CI_Controller {
 	   
 	}
 	
-	function index()
-	{
+	public function User()
+	{	
 		 if($this->session->userdata('logged_in'))
+	   { 
+	   
+	   $this->data['tablename'] = "reff_users"; 
+	   $this->data['menuid'] = "1";
+	   $data3['isAdd'] = $this->canAdd($this->data['groupid'],$this->data['menuid']);
+	   //log_message('info', ' isAdd : ' . $data3['isAdd']);
+	   $query = "SELECT * FROM reff_tablekey WHERE tablename = '" . $this->data['tablename'] . "'" ;
+	   $tablestructure = $this->Content->select2($query);
+	   foreach( $tablestructure as $tablestructurep )
 	   {
-		   $this->data2['menu_dashboard'] = "";
-		$this->data2['menu_user'] = "class=\"dropdown active\"";
-		$this->data2['menu_data'] = "class=\"dropdown\"";
-		$this->data2['menu_formula'] = "class=\"dropdown\"";
-		$this->load->view('dashboard/header', $this->data);
-		$this->load->view('dashboard/navbar', $this->data2);
-		$this->load->view('dashboard/contentuser');
-		$this->load->view('dashboard/footer');
+		   $this->data['fields'] = $tablestructurep->fields; 
+		   $this->data['keyfields'] = $tablestructurep->keyfields; 
+		   if($tablestructurep->Condition != null)
+		   $this->data['condition'] = $tablestructurep->Condition; 
 	   }
+		 $data3['Items'] = $this->Content->select($this->data['tablename'],null,null,$this->data['keyfields']);
+		$this->data2['menu_dashboard'] = "";
+		$this->data2['menu_user'] = "class=\"active\"";
+		$this->data2['menu_data'] = "";
+		$this->data2['menu_formula'] = "";
+		$this->load->view('home/header', $this->data);
+		$this->load->view('home/navbar', $this->data2);
+		$this->load->view('home/contentuser', $data3);
+		$this->load->view('home/footer');
+	   } 
 	   else
 	   {
-		   $this->load->view('dashboard/header');
-		$this->load->view('dashboard/navbar');
-		$this->load->view('dashboard/login');
-		$this->load->view('dashboard/footer');
-	   }
+		echo '<script type="text/javascript">alert("Harap login terlebih dahulu."); </script>';
+		 //If no session, redirect to login page
+	    $this->load->view('home/header', );
+		$this->load->view('home/navbar', $this->data2);
+		$this->load->view('home/contentuser', $data3);
+		$this->load->view('home/footer');
+	   } 	
+	}
+	
+	private function canAdd($groupid,$menuid)
+	{
+		$isAdds = 0;
+		$querymenu = $this->Content->select2("SELECT isAdd FROM reff_groupmenu WHERE groupid = '" . $groupid . "' AND menuid = '" .$menuid . "'" );
+		foreach($querymenu as $querymenup)
+		{
+			$isAdds = $querymenup->isAdd;
+		}
+		return $isAdds;
 	}
 }

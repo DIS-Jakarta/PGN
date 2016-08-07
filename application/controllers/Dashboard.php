@@ -47,7 +47,7 @@ class Dashboard extends CI_Controller {
 	   }
 	   else
 	   {
-		   $this->load->view('dashboard/header');
+		$this->load->view('dashboard/header');
 		$this->load->view('dashboard/navbar');
 		$this->load->view('dashboard/login');
 		$this->load->view('dashboard/footer');

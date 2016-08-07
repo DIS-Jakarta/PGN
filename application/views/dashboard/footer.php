@@ -142,15 +142,36 @@
 		  
 	  }
 	  
-	  $('.dropdown-toggle').hover(function(){
+	  $('#dropdown-toggle').hover(function(){
 	  $('.dropdown-menu').css('display','inline-block')}, function() {
     $('.dropdown-menu').css( 'display','none' );;
-})
+	})
+	
+	  $('#dropdown-toggle2').hover(function(){
+	  $('.dropdown-menu2').css('display','inline-block')}, function() {
+    $('.dropdown-menu2').css( 'display','none' );;
+	})
+	
+	  $('#dropdown-toggle3').hover(function(){
+	  $('.dropdown-menu3').css('display','inline-block')}, function() {
+    $('.dropdown-menu3').css( 'display','none' );;
+	})
 
-$('.dropdown-menu').hover(function(){
+	$('.dropdown-menu').hover(function(){
 	  $('.dropdown-menu').css('display','inline-block')}, function() {
     $('.dropdown-menu').css( 'display','none' );;
 	})  
+	
+	$('.dropdown-menu2').hover(function(){
+	  $('.dropdown-menu2').css('display','inline-block')}, function() {
+    $('.dropdown-menu2').css( 'display','none' );;
+	})  
+	
+	$('.dropdown-menu3').hover(function(){
+	  $('.dropdown-menu3').css('display','inline-block')}, function() {
+    $('.dropdown-menu3').css( 'display','none' );;
+	})  
+
     </script><!-- /Calendar -->
 </body>
 </html>

@@ -41,37 +41,24 @@
 	<!--<div><img src="' . site_url() . 'static/images/pgnnotext.png" width="35px" style="float:left;margin-left:15px;margin-right:15px;margin-top:5px;"></div>-->
 	<ul class="mainnav">
         <li id="menu-dashboard" ' . $menu_dashboard . ' ><a href="' . site_url() . '"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-        <li id="menu-user" ' . $menu_user . ' ><a href="' . site_url() . 'Users" ><i class="icon-user-md"></i><span>Manajemen User</span> </a> 
+        <li id="menu-user" ' . $menu_user . ' ><a href="javascript:;" id="dropdown-toggle" ><i class="icon-user-md"></i><span>Manajemen User</span> </a> 
 		          <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
+            <li><a href="#">User</a></li>
+            <li><a href="#">Group User</a></li>
 			</ul>
 			</li>
-        <li id="menu-data" ' . $menu_data . ' ><a href="#" ><i class="icon-copy"></i><span>Manajemen Data</span> </a>
-		          <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
+        <li id="menu-data" ' . $menu_data . ' ><a href="javascript:;" id="dropdown-toggle2" ><i class="icon-copy"></i><span>Manajemen Data</span> </a>
+		          <ul class="dropdown-menu2">
+            <li><a href="#">Data</a></li>
 			</ul>
 			</li>
-        <li id="menu-formula" ' . $menu_formula . ' ><a href="#" ><i class="icon-beaker"></i><span>Manajemen Formula</span> </a> 
-		          <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
+        <li id="menu-formula" ' . $menu_formula . ' ><a href="javascript:;" id="dropdown-toggle3" ><i class="icon-beaker"></i><span>Manajemen Formula</span> </a> 
+		          <ul class="dropdown-menu3">
+            <li><a href="#">Kategori</a></li>
+            <li><a href="#">Variable</a></li>
+            <li><a href="#">Formula</a></li>
 			</ul>
 			</li>
-		<li class="dropdown"><a href="javascript:;" class="dropdown-toggle"> <i class="icon-long-arrow-down"></i><span>Drops</span> <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="icons.html">Icons</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="pricing.html">Pricing Plans</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
-            <li><a href="error.html">404</a></li>
-          </ul>
-        </li>
       </ul>
     </div>
     <!-- /container --> 
