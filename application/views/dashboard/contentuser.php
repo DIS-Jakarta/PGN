@@ -60,7 +60,7 @@
 <!-- /main -->
 
 <!-- Bootstrap modal -->
-  <div class="modal fade" id="modal_form" role="dialog">
+  <div class="modal fade" id="modal_form" role="dialog" style="display:none;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
