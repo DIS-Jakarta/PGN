@@ -1346,3 +1346,22 @@ color: #333;
 	}
 }
 
+[name=table_length]
+{
+	margin-left:20px;
+}
+
+[type=search]
+{
+	margin-left:12px;
+}
+
+.form-group
+{
+	margin-bottom:10px;
+}
+
+.control-label
+{
+	margin-right:10px;
+}

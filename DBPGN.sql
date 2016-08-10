@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2016 at 07:47 PM
+-- Generation Time: Aug 10, 2016 at 06:25 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.9
 
@@ -92,16 +92,16 @@ INSERT INTO `reff_menu` (`menuid`, `menu_desc`, `menu_url`, `menu_image_url`) VA
 --
 
 CREATE TABLE IF NOT EXISTS `reff_region` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `regionid` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`regionid`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `reff_region`
 --
 
-INSERT INTO `reff_region` (`id`, `description`) VALUES
+INSERT INTO `reff_region` (`regionid`, `description`) VALUES
 (0, 'Semua Regional');
 
 -- --------------------------------------------------------
@@ -113,7 +113,7 @@ INSERT INTO `reff_region` (`id`, `description`) VALUES
 CREATE TABLE IF NOT EXISTS `reff_table` (
   `maintable` varchar(150) NOT NULL,
   `refffield` varchar(150) NOT NULL,
-  `reffquery` varchar(150) NOT NULL,
+  `reffquery` varchar(1000) NOT NULL,
   `reffqueryedit` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -122,7 +122,8 @@ CREATE TABLE IF NOT EXISTS `reff_table` (
 --
 
 INSERT INTO `reff_table` (`maintable`, `refffield`, `reffquery`, `reffqueryedit`) VALUES
-('reff_users', 'groupid', 'select CONCAT(groupid,'' - '',description) as ''description'' FROM reff_groupid', 'select groupid,description FROM reff_groupid');
+('reff_users', 'groupid', 'select CONCAT(groupid,'' - '',description) as ''description'' FROM reff_groupid', 'select groupid,description FROM reff_groupid'),
+('reff_users', 'regionid', 'select CONCAT(regionid,'' - '',description) as ''description'' FROM reff_region', 'select regionid,description FROM reff_region');
 
 -- --------------------------------------------------------
 
@@ -143,7 +144,7 @@ CREATE TABLE IF NOT EXISTS `reff_tablekey` (
 --
 
 INSERT INTO `reff_tablekey` (`tablename`, `keyfields`, `fields`, `Condition`) VALUES
-('reff_users', 'userid', 'userid,password,groupid,full_name,address,phone_number,email_address,active,region', 'userid != ''admin''');
+('reff_users', 'userid', 'userid,password,groupid,full_name,address,phone_number,email_address,regionid,active', 'userid != ''admin''');
 
 -- --------------------------------------------------------
 
@@ -161,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `reff_users` (
   `email_address` varchar(200) DEFAULT NULL,
   `is_login` bit(1) NOT NULL,
   `active` bit(1) NOT NULL,
-  `region` bigint(20) NOT NULL,
+  `regionid` bigint(20) NOT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -169,8 +170,8 @@ CREATE TABLE IF NOT EXISTS `reff_users` (
 -- Dumping data for table `reff_users`
 --
 
-INSERT INTO `reff_users` (`userid`, `password`, `groupid`, `full_name`, `address`, `phone_number`, `email_address`, `is_login`, `active`, `region`) VALUES
-('super_admin', '161ebd7d45089b3446ee4e0d86dbcf92', '1', 'Super Admin', NULL, NULL, '', b'0', b'1', 0);
+INSERT INTO `reff_users` (`userid`, `password`, `groupid`, `full_name`, `address`, `phone_number`, `email_address`, `is_login`, `active`, `regionid`) VALUES
+('super_admin', '161ebd7d45089b3446ee4e0d86dbcf92', '1', 'Super Admin', 'tes', '1234', 'a@mail.com', b'0', b'1', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
