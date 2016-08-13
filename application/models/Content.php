@@ -52,14 +52,14 @@ Class Content extends CI_Model
 		foreach ($column as $item) 
 		{
 			if($_POST['search']['value'])
-				($i===0) ? $this->db->like($item, $_POST['search']['value']) : $this->db->or_like($item, $_POST['search']['value']);
+				($i===0) ? $this->db->like($tablename . '.' . $item, $_POST['search']['value']) : $this->db->or_like($tablename . '.' . $item, $_POST['search']['value']);
 			$column[$i] = $item;
 			$i++;
 		}
 		
 		if(isset($_POST['order']))
 		{
-			$this->db->order_by($column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+			$this->db->order_by($tablename . '.' . $column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 		} 
 		else if(isset($this->order))
 		{
@@ -92,11 +92,13 @@ Class Content extends CI_Model
 		$this->db->delete($tablename);
 	}
 	
-	function get_datatables($tablename,$column,$condition)
+	function get_datatables($tablename,$column,$condition,$jointable,$joinon)
 	{
 		$this->_get_datatables_query($tablename,$column);
 		if($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
+		if($jointable != "")
+			$this->db->join($jointable,$joinon,'left');
 		if($condition != "")
 			$this->db->where($condition);
 		$query = $this->db->get();

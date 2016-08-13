@@ -48,11 +48,19 @@
                       <th>MENU DASHBOARD</th>
                       <th>MENU USER</th>
                       <th>MENU GROUP USER</th>
-                      <th>MENU TAMBAH DATA</th>
-                      <th>MENU EDIT DATA</th>
-                      <th>MENU KATEGORI</th>
+                      <th>MENU ENTRY DATA</th>
+                      <th>MENU MANAJEMEN DATA</th>
                       <th>MENU FORMULA</th>
-                      <th>MENU VARIABEL</th>
+                      <th>MENU RUTE PESAWAT</th>
+                      <th>MENU SAMPAH</th>
+                      <th>MENU AIR</th>
+                      <th>MENU KONTEN</th>
+                      <th>MENU BERITA</th>
+                      <th>MENU GALLERY</th>
+                      <th>MENU KONTAK</th>
+                      <th>MENU KATEGORI GANGGUAN KEAMANAN</th>
+                      <th>MENU SUB KATEGORI GANGGUAN KEAMANAN</th>
+                      <th>MENU LOKASI GANGGUAN KEAMANAN</th>
                       <th>ACTION</th>
                     </tr>
                   </thead>
@@ -134,7 +142,7 @@
               </div>
             </div>
 			<div class="form-group">
-              <label class="control-label col-md-3">TAMBAH DATA</label>
+              <label class="control-label col-md-3">ENTRY DATA</label>
               <div class="col-md-9">
                 <input type="checkbox" name="isViewTambahData" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
 				<input type="checkbox" name="isAddTambahData" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
@@ -143,21 +151,12 @@
               </div>
             </div>
 			<div class="form-group">
-              <label class="control-label col-md-3">EDIT DATA</label>
+              <label class="control-label col-md-3">MANAJAMEN DATA</label>
               <div class="col-md-9">
                 <input type="checkbox" name="isViewEditData" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
 				<input type="checkbox" name="isAddEditData" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
 				<input type="checkbox" name="isUpdateEditData" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
 				<input type="checkbox" name="isDeleteEditData" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
-              </div>
-            </div>
-			<div class="form-group">
-              <label class="control-label col-md-3">KATEGORI</label>
-              <div class="col-md-9">
-                <input type="checkbox" name="isViewKategori" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
-				<input type="checkbox" name="isAddKategori" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
-				<input type="checkbox" name="isUpdateKategori" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
-				<input type="checkbox" name="isDeleteKategori" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
               </div>
             </div>
 			<div class="form-group">
@@ -170,12 +169,84 @@
               </div>
             </div>
 			<div class="form-group">
-              <label class="control-label col-md-3">VARIABEL</label>
+              <label class="control-label col-md-3">RUTE PESAWAT</label>
               <div class="col-md-9">
-                <input type="checkbox" name="isViewVariabel" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
-				<input type="checkbox" name="isAddVariabel" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
-				<input type="checkbox" name="isUpdateVariabel" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
-				<input type="checkbox" name="isDeleteVariabel" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+                <input type="checkbox" name="isViewRutepesawat" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddRutepesawat" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateRutepesawat" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteRutepesawat" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">SAMPAH</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewSampah" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddSampah" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateSampah" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteSampah" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">AIR</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewAir" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddAir" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateAir" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteAir" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">KATEGORI GANGGUAN KEAMANAN</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewKatgangguankeamanan" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddKatgangguankeamanan" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateKatgangguankeamanan" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteKatgangguankeamanan" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">SUB KATEGORI GANGGUAN KEAMANAN</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewSubkatgangguankeamanan" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddSubkatgangguankeamanan" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateSubkatgangguankeamanan" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteSubkatgangguankeamanan" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">LOKASI GANGGUAN KEAMANAN</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewLokgangguankeamanan" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddLokgangguankeamanan" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateLokgangguankeamanan" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteLokgangguankeamanan" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">BERITA</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewBerita" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddBerita" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateBerita" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteBerita" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">GALLERY</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewGallery" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddGallery" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateGallery" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteGallery" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
+              </div>
+            </div>
+			<div class="form-group">
+              <label class="control-label col-md-3">KONTAK</label>
+              <div class="col-md-9">
+                <input type="checkbox" name="isViewKontak" id="isView" style="margin-top:8px;"><label class="control-label col-md-3">View</label>
+				<input type="checkbox" name="isAddKontak" id="isAdd" style="margin-top:8px;"><label class="control-label col-md-3">Add</label>
+				<input type="checkbox" name="isUpdateKontak" id="isUpdate" style="margin-top:8px;"><label class="control-label col-md-3">Edit</label>
+				<input type="checkbox" name="isDeleteKontak" id="isDelete" style="margin-top:8px;"><label class="control-label col-md-3">Delete</label>
               </div>
             </div>
           </div>

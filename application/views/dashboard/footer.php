@@ -3,7 +3,7 @@
 <!-- Le javascript
 ================================================== --> 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.js"></script>
 <script src="<?php echo site_url() ?>static/js/jquery-1.7.2.min.js"></script> 
 <script type="text/javascript">
 	var $j = jQuery.noConflict(true);
@@ -183,11 +183,16 @@
     $('.dropdown-menu3').css( 'display','none' );;
 	})  
 	
-	table = $('#table').DataTable({ 
+	// Setup - add a text input to each footer cell
+    $('#table thead tr#filterrow th').each( function (i) {
+		//var title = $(this).text();
+        $(this).html( '<input id="searchdt" type="text" placeholder="Search" />' );
+    } );
+	
+	var table = $('#table').DataTable({ 
 
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
-        
         // Load data for the table's content from an Ajax source
         "ajax": {
             "url": "<?php echo site_url('Items/select')?>",
@@ -213,30 +218,52 @@
 			
             
         },
+		
+		initComplete: function() {
+		var api = this.api();
+
+      // Apply the search
+		api.columns().every(function() {
+        var that = this;
+		
+		$('input', this.header()).on('keyup change', function() {
+			 if (that.search() !== this.value) {
+				 that
+				 .search( this.value )
+				 .draw();
+
+          }
+            // tbl
+                // .column( $(this).data('index') )
+                // .search( this.value )
+                // .draw();
+        } );
+		});
+		},
 
         //Set column definition initialisation properties.
 
-		fixedHeader: true,
-		scrollY:        340,
-		scrollCollapse: true,
-		fixedColumns: true,
-		scrollX:        true,
-		"columnDefs": [
-        { 
-          "targets": [ -1 ], //last column
-          "orderable": false, //set not orderable
-		  <?php 
-		  // if(isset($tablename))
-		  // {
-			  // if($tablename == "reff_itemss"){
-				// echo '"visible" : false,';
-			  // }
-		  // }?>
-        }
-		
-        ]
+		// fixedHeader: true,
+		// scrollY:        340,
+		// scrollCollapse: true,
+		// fixedColumns: true,
+		// scrollX:        true,
+		// "columnDefs": [
+        // { 
+          // "targets": [ -1 ], //last column
+          // "orderable": false, //set not orderable
+		  // <?php 
+		  // // if(isset($tablename))
+		  // // {
+			  // // if($tablename == "reff_itemss"){
+				// // echo '"visible" : false,';
+			  // // }
+		  // // }?>
+        // }
+        // ]
 		
       });
+	  
 	  
 	  $(document).ajaxStop(function()
 	{

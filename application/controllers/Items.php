@@ -13,12 +13,52 @@ class Items extends CI_Controller {
 	
 	public function select()
 	{
+		$jointable="";
+		$joinon="";
 		$session_data = $this->session->userdata('logged_in');
 		$data = array();
 		$column = explode(',',$_POST['fields']);
 		$no = $_POST['start'];
+		//log_message('info', print_r($_POST["columns"]["0"]["search"[""value]]);
 		$condition = $_POST['condition'];
-		$out = $this->Content->get_datatables($_POST['tablename'],$column,$condition);
+
+		for ( $i=0 ; $i<count($_POST["columns"]) ; $i++ )
+		{
+			if ( $_POST["columns"][$i]["search"]["value"] != "")
+			{
+				$joinfield = "";
+				$jointable="";
+				if ( $condition == "" )
+				{
+					$condition = "WHERE ";
+				}
+				else
+				{
+					$condition .= " AND ";
+				}
+				
+				$query = "SELECT * FROM reff_table WHERE maintable = '" . $_POST['tablename'] . "' AND refffield = '" . $column[$i] . "'";
+					$countrows = $this->Content->countrows($query);
+					if($countrows > 0)
+					{
+						$reff = $this->Content->select2($query);
+						foreach($reff as $reffp)
+						{
+						$joinfield = $reffp->fieldjointable;
+						$jointable = $reffp->jointable;
+						//. ' ON ' . $_POST['tablename'] . '.' . $reffp->fieldjointable . ' = ' . $reffp->jointable . '.' . $reffp->fieldjointable ;
+						$joinon = $_POST['tablename'] . '.' . $column[$i] . ' = ' . $reffp->jointable . '.' . $column[$i];
+						}
+					}
+				if($jointable != "")
+					$condition .= $jointable . '.' . $column[$i]." LIKE '%".mysql_real_escape_string($_POST["columns"][$i]["search"]["value"])."%' ";
+				else
+					$condition .= $column[$i]." LIKE '%".mysql_real_escape_string($_POST["columns"][$i]["search"]["value"])."%' ";
+			}
+		}
+		
+		$out = $this->Content->get_datatables($_POST['tablename'],$column,$condition,$jointable,$joinon);
+		
 		$keyfields = explode(',',$_POST['keyfields']);
 		$menu = $this->Content->select2("SELECT isView,isUpdate,isDelete FROM reff_groupmenu WHERE menuid = '" . $_POST['menuid'] . "' AND groupid = '" . $session_data['groupid'] . "'");
 		
@@ -95,11 +135,11 @@ class Items extends CI_Controller {
 			
 			$ViewEditdelete = "";
 			if($isView == "1"){
-			$ViewEditdelete = '<td><a class="btn btn-sm btn-success" style="margin-right:10px;" href="javascript:void()" onclick="view(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
+			$ViewEditdelete = '<td><a class="btn btn-sm btn-success" style="margin-right:2px;" href="javascript:void()" onclick="view(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
 			<i class="icon-eye-open">Lihat</i></a>';
 			}
 			if($isUpdate == "1"){
-			$ViewEditdelete .= '<td><a class="btn btn-sm btn-primary" style="margin-right:10px;" href="javascript:void()" onclick="edit(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
+			$ViewEditdelete .= '<td><a class="btn btn-sm btn-primary" style="margin-right:2px;" href="javascript:void()" onclick="edit(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
 			<i class="icon-edit">Ubah</i></a>';
 			}
 			if($isDelete == "1"){

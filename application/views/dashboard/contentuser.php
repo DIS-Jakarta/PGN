@@ -16,7 +16,7 @@
 		<div id="phpGrid">
 			<table class="table table-striped table-bordered" id="table" cellspacing="0" width="98%">
                   <thead>
-                    <tr>
+				    <tr>
                       <th>USERID</th>
                       <th>PASSWORD</th>
                       <th>GROUP USER</th>
@@ -24,11 +24,23 @@
                       <th>ALAMAT</th>
                       <th>NO. TELEPON</th>
                       <th>ALAMAT EMAIL</th>
-					  <th>REGION</th>
+					  <th>DIVISI</th>
                       <th>ACTIVE</th>
                       <th>ACTION</th>
                     </tr>
-                  </thead>
+				   <tr id="filterrow">
+                      <th>USERID</th>
+                      <th>PASSWORD</th>
+                      <th>GROUP USER</th>
+                      <th>NAMA LENGKAP</th>
+                      <th>ALAMAT</th>
+                      <th>NO. TELEPON</th>
+                      <th>ALAMAT EMAIL</th>
+					  <th>DIVISI</th>
+                      <th>ACTIVE</th>
+                      <th >ACTION</th>
+                    </tr>
+					</thead>
                   <tbody>';
                   
                  /*   foreach ($Items as $row) {
@@ -117,9 +129,9 @@
               </div>
             </div>
 			<div class="form-group">
-              <label class="control-label col-md-3">REGION</label>
+              <label class="control-label col-md-3">DIVISI</label>
               <div class="col-md-9">
-                <select name="regionid" id="regionid" class="form-control">
+                <select name="divisionid" id="divisionid" class="form-control">
 				</select>
               </div>
             </div>
