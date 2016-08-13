@@ -210,7 +210,7 @@ class Items extends CI_Controller {
 	
 	public function fillddl()
 	{
-		$option = array();
+		$option = '';
 		$query = "SELECT * FROM reff_table WHERE maintable = '" . $_POST['tablename'] . "' AND refffield = '" . $_POST['reff_column'] . "'";
 		$countrows = $this->Content->countrows($query);
 		if($countrows > 0)
