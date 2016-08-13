@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2016 at 06:25 PM
+-- Generation Time: Aug 13, 2016 at 10:46 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.9
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE `dbportalpgn` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `dbportalpgn`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reff_division`
+--
+
+CREATE TABLE IF NOT EXISTS `reff_division` (
+  `divisionid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `description` varchar(250) NOT NULL,
+  PRIMARY KEY (`divisionid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `reff_division`
+--
+
+INSERT INTO `reff_division` (`divisionid`, `description`) VALUES
+(1, 'divisi tes');
 
 -- --------------------------------------------------------
 
@@ -95,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `reff_region` (
   `regionid` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`regionid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dumping data for table `reff_region`
@@ -114,16 +133,18 @@ CREATE TABLE IF NOT EXISTS `reff_table` (
   `maintable` varchar(150) NOT NULL,
   `refffield` varchar(150) NOT NULL,
   `reffquery` varchar(1000) NOT NULL,
-  `reffqueryedit` varchar(1000) NOT NULL
+  `reffqueryedit` varchar(1000) NOT NULL,
+  `jointable` varchar(250) NOT NULL,
+  `fieldjointable` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `reff_table`
 --
 
-INSERT INTO `reff_table` (`maintable`, `refffield`, `reffquery`, `reffqueryedit`) VALUES
-('reff_users', 'groupid', 'select CONCAT(groupid,'' - '',description) as ''description'' FROM reff_groupid', 'select groupid,description FROM reff_groupid'),
-('reff_users', 'regionid', 'select CONCAT(regionid,'' - '',description) as ''description'' FROM reff_region', 'select regionid,description FROM reff_region');
+INSERT INTO `reff_table` (`maintable`, `refffield`, `reffquery`, `reffqueryedit`, `jointable`, `fieldjointable`) VALUES
+('reff_users', 'groupid', 'select CONCAT(groupid,'' - '',description) as ''description'' FROM reff_groupid', 'select groupid,description FROM reff_groupid', 'reff_groupid', 'description'),
+('reff_users', 'divisionid', 'select CONCAT(divisionid,'' - '',description) as ''description'' FROM reff_division', 'select divisionid,description FROM reff_division', 'reff_division', 'description');
 
 -- --------------------------------------------------------
 
@@ -144,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `reff_tablekey` (
 --
 
 INSERT INTO `reff_tablekey` (`tablename`, `keyfields`, `fields`, `Condition`) VALUES
-('reff_users', 'userid', 'userid,password,groupid,full_name,address,phone_number,email_address,regionid,active', 'userid != ''admin''');
+('reff_users', 'userid', 'userid,password,groupid,full_name,address,phone_number,email_address,divisionid,active', 'userid != ''admin''');
 
 -- --------------------------------------------------------
 
@@ -162,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `reff_users` (
   `email_address` varchar(200) DEFAULT NULL,
   `is_login` bit(1) NOT NULL,
   `active` bit(1) NOT NULL,
-  `regionid` bigint(20) NOT NULL,
+  `divisionid` bigint(20) NOT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -170,8 +191,8 @@ CREATE TABLE IF NOT EXISTS `reff_users` (
 -- Dumping data for table `reff_users`
 --
 
-INSERT INTO `reff_users` (`userid`, `password`, `groupid`, `full_name`, `address`, `phone_number`, `email_address`, `is_login`, `active`, `regionid`) VALUES
-('super_admin', '161ebd7d45089b3446ee4e0d86dbcf92', '1', 'Super Admin', 'tes', '1234', 'a@mail.com', b'0', b'1', 0);
+INSERT INTO `reff_users` (`userid`, `password`, `groupid`, `full_name`, `address`, `phone_number`, `email_address`, `is_login`, `active`, `divisionid`) VALUES
+('super_admin', '161ebd7d45089b3446ee4e0d86dbcf92', '1', 'Super Admin', 'tes', '1234', 'a@mail.com', b'0', b'1', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
