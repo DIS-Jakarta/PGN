@@ -14,7 +14,11 @@ class Items extends CI_Controller {
 	public function select()
 	{
 		$jointable="";
+		$joinfield = "";
 		$joinon="";
+		$_jointable="";
+		$_joinfield = "";
+		$_joinon="";
 		$session_data = $this->session->userdata('logged_in');
 		$data = array();
 		$column = explode(',',$_POST['fields']);
@@ -24,10 +28,12 @@ class Items extends CI_Controller {
 
 		for ( $i=0 ; $i<count($_POST["columns"]) ; $i++ )
 		{
+			$_jointable="";
+			$_joinfield = "";
+			
 			if ( $_POST["columns"][$i]["search"]["value"] != "")
 			{
-				$joinfield = "";
-				$jointable="";
+				
 				if ( $condition == "" )
 				{
 					$condition = "WHERE ";
@@ -44,14 +50,30 @@ class Items extends CI_Controller {
 						$reff = $this->Content->select2($query);
 						foreach($reff as $reffp)
 						{
-						$joinfield = $reffp->fieldjointable;
-						$jointable = $reffp->jointable;
+							if($joinfield == "")
+							{
+								$joinfield = $reffp->fieldjointable;
+								$_joinfield = $reffp->fieldjointable;
+							}
+							else
+								$joinfield .= "," . $reffp->fieldjointable;
+							
+							if($jointable == "")
+							{
+								$jointable = $reffp->jointable;
+								$_jointable = $reffp->jointable;
+							}
+							else
+								$jointable .= $reffp->jointable;
 						//. ' ON ' . $_POST['tablename'] . '.' . $reffp->fieldjointable . ' = ' . $reffp->jointable . '.' . $reffp->fieldjointable ;
-						$joinon = $_POST['tablename'] . '.' . $column[$i] . ' = ' . $reffp->jointable . '.' . $column[$i];
+						if($joinon == "")
+							$joinon = $_POST['tablename'] . '.' . $column[$i] . ' = ' . $reffp->jointable . '.' . $column[$i];
+						else
+							$joinon .= "," . $_POST['tablename'] . '.' . $column[$i] . ' = ' . $reffp->jointable . '.' . $column[$i];
 						}
 					}
-				if($jointable != "")
-					$condition .= $jointable . '.' . $column[$i]." LIKE '%".mysql_real_escape_string($_POST["columns"][$i]["search"]["value"])."%' ";
+				if($_jointable != "")
+					$condition .= $_jointable . '.' . $_joinfield ." LIKE '%".mysql_real_escape_string($_POST["columns"][$i]["search"]["value"])."%' ";
 				else
 					$condition .= $column[$i]." LIKE '%".mysql_real_escape_string($_POST["columns"][$i]["search"]["value"])."%' ";
 			}
@@ -135,15 +157,15 @@ class Items extends CI_Controller {
 			
 			$ViewEditdelete = "";
 			if($isView == "1"){
-			$ViewEditdelete = '<td><a class="btn btn-sm btn-success" style="margin-right:2px;" href="javascript:void()" onclick="view(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
+			$ViewEditdelete = '<td><a class="btn btn-sm btn-success" style="margin:3px;display:inline-block;width:50px;" href="javascript:void()" onclick="view(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
 			<i class="icon-eye-open">Lihat</i></a>';
 			}
 			if($isUpdate == "1"){
-			$ViewEditdelete .= '<td><a class="btn btn-sm btn-primary" style="margin-right:2px;" href="javascript:void()" onclick="edit(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
+			$ViewEditdelete .= '<td><a class="btn btn-sm btn-primary" style="margin:3px;display:inline-block;width:50px;" href="javascript:void()" onclick="edit(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
 			<i class="icon-edit">Ubah</i></a>';
 			}
 			if($isDelete == "1"){
-			$ViewEditdelete .= '<a class="btn btn-sm btn-danger" href="javascript:void()" title="Hapus" onclick="delete_it(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ')"><i class="icon-remove-sign">Hapus</i></a></td>
+			$ViewEditdelete .= '<a class="btn btn-sm btn-danger" href="javascript:void()" style="margin:3px;display:inline-block;width:50px;" title="Hapus" onclick="delete_it(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ')"><i class="icon-remove-sign">Hapus</i></a></td>
 			';
 			}
 			$row[] = $ViewEditdelete;

@@ -94,11 +94,22 @@ Class Content extends CI_Model
 	
 	function get_datatables($tablename,$column,$condition,$jointable,$joinon)
 	{
+		log_message('ERROR', 'jointable & joinon : ' . $jointable );
+		log_message('ERROR', 'condition : ' . $condition );
 		$this->_get_datatables_query($tablename,$column);
 		if($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);
 		if($jointable != "")
-			$this->db->join($jointable,$joinon,'left');
+		{
+			$_jointable = explode(',',$jointable);
+			$_joinon = explode(',',$joinon);
+			log_message('ERROR', 'jointable : ' . $jointable );
+			for($i = 0;$i < count($_jointable);$i++)
+			{
+				if($_jointable[$i] != "")
+					$this->db->join($_jointable[$i],$_joinon[$i],'left');
+			}
+		}
 		if($condition != "")
 			$this->db->where($condition);
 		$query = $this->db->get();

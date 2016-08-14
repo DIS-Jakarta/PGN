@@ -97,7 +97,7 @@ class Dashboard extends CI_Controller {
 			 'email_address' => $row->email_address,
 			 'is_login' => $row->is_login,
 			 'logged_in' => TRUE,
-			 'region' => $row->region
+			 'divisionid' => $row->divisionid
 		   );
 		   
 		   //echo '<script type="text/javascript">alert("logged_in : ' . $sess_array['is_login'] . '")</script>';

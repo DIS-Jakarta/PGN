@@ -186,12 +186,15 @@
 	// Setup - add a text input to each footer cell
     $('#table thead tr#filterrow th').each( function (i) {
 		//var title = $(this).text();
-        $(this).html( '<input id="searchdt" type="text" placeholder="Search" />' );
+		if($(this).html() != "ACTION")
+        $(this).html( '<input id="searchdt" type="text" placeholder="Search" style="width:90%" />' );
+		else
+		$(this).html( '' );
     } );
 	
-	var table = $('#table').DataTable({ 
+	var table = $('#table').removeAttr('width').DataTable({ 
 
-        "processing": true, //Feature control the processing indicator.
+        //"processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         // Load data for the table's content from an Ajax source
         "ajax": {
@@ -226,12 +229,17 @@
 		api.columns().every(function() {
         var that = this;
 		
+		var search = $.fn.dataTable.util.throttle(
+			function ( val ) {
+				table.search( val ).draw();
+			},
+			1000
+			);
+				
 		$('input', this.header()).on('keyup change', function() {
 			 if (that.search() !== this.value) {
 				 that
-				 .search( this.value )
-				 .draw();
-
+				 .search( this.value );
           }
             // tbl
                 // .column( $(this).data('index') )
@@ -243,24 +251,25 @@
 
         //Set column definition initialisation properties.
 
-		// fixedHeader: true,
-		// scrollY:        340,
-		// scrollCollapse: true,
-		// fixedColumns: true,
-		// scrollX:        true,
-		// "columnDefs": [
-        // { 
-          // "targets": [ -1 ], //last column
-          // "orderable": false, //set not orderable
-		  // <?php 
-		  // // if(isset($tablename))
-		  // // {
-			  // // if($tablename == "reff_itemss"){
-				// // echo '"visible" : false,';
-			  // // }
-		  // // }?>
-        // }
-        // ]
+		fixedHeader: true,
+		scrollY:        340,
+		scrollCollapse: true,
+		fixedColumns: true,
+		scrollX:        true,
+		"columnDefs": [
+        { 
+          "targets": [ -1 ], //last column
+          "orderable": false, //set not orderable
+		  <?php 
+		  // if(isset($tablename))
+		  // {
+			  // if($tablename == "reff_itemss"){
+				// echo '"visible" : false,';
+			  // }
+		  // }?>
+        },
+		{ width: 20 }
+        ]
 		
       });
 	  

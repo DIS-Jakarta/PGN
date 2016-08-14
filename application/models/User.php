@@ -5,7 +5,7 @@ Class User extends CI_Model
  {
 	
    $query = $this->db->query(
-        "SELECT     userid, groupid, full_name, address, phone_number, email_address, is_login
+        "SELECT     userid, groupid, full_name, address, phone_number, email_address, is_login, divisionid
         FROM        reff_users A
         WHERE       A.userid = '$userid'
         AND         A.password = '$password'
