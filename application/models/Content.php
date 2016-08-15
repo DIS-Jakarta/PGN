@@ -49,13 +49,13 @@ Class Content extends CI_Model
 		$this->db->from($tablename);
 		$i = 0;
 	
-		foreach ($column as $item) 
-		{
-			if($_POST['search']['value'])
-				($i===0) ? $this->db->like($tablename . '.' . $item, $_POST['search']['value']) : $this->db->or_like($tablename . '.' . $item, $_POST['search']['value']);
-			$column[$i] = $item;
-			$i++;
-		}
+		// foreach ($column as $item) 
+		// {
+			// if($_POST['search']['value'])
+				// ($i===0) ? $this->db->like($tablename . '.' . $item, $_POST['search']['value']) : $this->db->or_like($tablename . '.' . $item, $_POST['search']['value']);
+			// $column[$i] = $item;
+			// $i++;
+		// }
 		
 		if(isset($_POST['order']))
 		{
@@ -94,8 +94,8 @@ Class Content extends CI_Model
 	
 	function get_datatables($tablename,$column,$condition,$jointable,$joinon)
 	{
-		log_message('ERROR', 'jointable & joinon : ' . $jointable );
-		log_message('ERROR', 'condition : ' . $condition );
+		//log_message('ERROR', 'jointable & joinon : ' . $jointable );
+		//log_message('ERROR', 'condition : ' . $condition );
 		$this->_get_datatables_query($tablename,$column);
 		if($_POST['length'] != -1)
 			$this->db->limit($_POST['length'], $_POST['start']);

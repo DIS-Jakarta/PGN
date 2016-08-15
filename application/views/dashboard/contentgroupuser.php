@@ -1,7 +1,4 @@
-<script type="text/javascript">
-	$('.current').html("Group Menu")
-	
-	</script>
+
 <section id="main" class="column">
 		<!--<article class="module width_full">
 			<header><h3>Stats</h3></header>
@@ -33,10 +30,8 @@
 			</div>
 		</article> --><!-- end of stats article -->
 		<?php 
-		if(isset($Items))
-		{ 
-		if($isAdd == 1)
-		eecho '<button class="btn btn-add" onclick="addGroupUser()" style="margin-bottom:15px;"><i class="icon-plus"></i> Add User</button>';
+		
+		echo '<button class="btn btn-add" onclick="addGroupUser()" style="margin-bottom:15px;"><i class="icon-plus"></i> Add User</button>';
 		
 		echo '
 		<br />
@@ -45,7 +40,7 @@
                   <thead>
                     <tr>
                       <th>GROUP USER</th>
-                      <th>MENU DASHBOARD</th>
+                      <!--<th>MENU DASHBOARD</th>
                       <th>MENU USER</th>
                       <th>MENU GROUP USER</th>
                       <th>MENU ENTRY DATA</th>
@@ -54,13 +49,13 @@
                       <th>MENU RUTE PESAWAT</th>
                       <th>MENU SAMPAH</th>
                       <th>MENU AIR</th>
+					  <th>MENU KATEGORI GANGGUAN KEAMANAN</th>
+                      <th>MENU SUB KATEGORI GANGGUAN KEAMANAN</th>
+                      <th>MENU LOKASI GANGGUAN KEAMANAN</th>
                       <th>MENU KONTEN</th>
                       <th>MENU BERITA</th>
                       <th>MENU GALLERY</th>
-                      <th>MENU KONTAK</th>
-                      <th>MENU KATEGORI GANGGUAN KEAMANAN</th>
-                      <th>MENU SUB KATEGORI GANGGUAN KEAMANAN</th>
-                      <th>MENU LOKASI GANGGUAN KEAMANAN</th>
+                      <th>MENU KONTAK</th>-->
                       <th>ACTION</th>
                     </tr>
                   </thead>
@@ -85,7 +80,7 @@
             echo    '</tbody>
             </table>
 		</div>';
-		} ?>
+		 ?>
 		
 		
 		

@@ -14,7 +14,7 @@
 		echo '
 		<br />
 		<div id="phpGrid">
-			<table class="table table-striped table-bordered" id="table" cellspacing="0" width="98%">
+			<table class="table table-striped table-bordered" id="table" cellspacing="0" width="100%">
                   <thead>
 				    <tr>
                       <th>USERID</th>

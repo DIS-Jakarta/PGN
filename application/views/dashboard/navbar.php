@@ -44,7 +44,7 @@
         <li id="menu-user" ' . $menu_user . ' ><a href="javascript:;" id="dropdown-toggle" ><i class="icon-user-md"></i><span>Manajemen User</span> </a> 
 		          <ul class="dropdown-menu">
             <li><a href="' . site_url() . 'Users/User">User</a></li>
-            <li><a href="#">Group User</a></li>
+            <li><a href="' . site_url() . 'Users/Groupuser">Group User</a></li>
 			</ul>
 			</li>
         <li id="menu-data" ' . $menu_data . ' ><a href="javascript:;" id="dropdown-toggle2" ><i class="icon-copy"></i><span>Manajemen Data</span> </a>

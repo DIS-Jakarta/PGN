@@ -76,23 +76,27 @@ class Users extends CI_Controller {
 		 if($this->session->userdata('logged_in'))
 	   { 
 		$this->data['tablename'] = "reff_groupmenu"; 
-		$this->data['menuid'] = "3";
+		$this->data['menuid'] = "2";
 		$data3['isAdd'] = $this->canAdd($this->data['groupid'],$this->data['menuid']);
 		$query = "SELECT * FROM reff_tablekey WHERE tablename = '" . $this->data['tablename'] . "'" ;
-	   $tablestructure = $this->Content->select2($query);
-	   foreach( $tablestructure as $tablestructurep )
-	   {
-		   $this->data['fields'] = $tablestructurep->fields; 
-		   $this->data['keyfields'] = $tablestructurep->keyfields; 
-		   if($tablestructurep->Condition != null)
-		   $this->data['condition'] = $tablestructurep->Condition; 
-	   }
-		 $data3['Items'] = $this->Content->select($this->data['tablename'],"groupid","groupid != '11111'",$this->data['keyfields']);
-		 
+	   // $tablestructure = $this->Content->select2($query);
+	   // foreach( $tablestructure as $tablestructurep )
+	   // {
+		   // $this->data['fields'] = $tablestructurep->fields; 
+		   // $this->data['keyfields'] = $tablestructurep->keyfields; 
+		   // if($tablestructurep->Condition != null)
+		   // $this->data['condition'] = $tablestructurep->Condition; 
+	   // }
+		 // $data3['Items'] = $this->Content->select($this->data['tablename'],"groupid","groupid != '1'",$this->data['keyfields']);
+		$this->data2['menu_dashboard'] = "";
+		$this->data2['menu_user'] = "class=\"dropdown active\"";
+		$this->data2['menu_data'] = "class=\"dropdown\"";
+		$this->data2['menu_formula'] = "class=\"dropdown\"";
+		
 		$this->load->view('dashboard/header', $this->data);
 		$this->load->view('dashboard/navbar', $this->data2);
 		$this->load->view('dashboard/contentgroupuser', $data3);
-		$this->load->view('dashboard/footer');
+		$this->load->view('dashboard/footergroupuser');
 	   } 
 	   else
 	   {

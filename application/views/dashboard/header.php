@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         rel="stylesheet">
 <link href="<? echo site_url();?>/static/css/font-awesome.css" rel="stylesheet">
 <link href="<? echo site_url();?>/static/css/style.css" rel="stylesheet">
-<link href="<? echo site_url();?>/static/css/pages/dashboard.css" rel="stylesheet">
+
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
