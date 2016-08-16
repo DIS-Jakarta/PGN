@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 16, 2016 at 07:15 PM
+-- Generation Time: Aug 13, 2016 at 10:46 PM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.9
 
@@ -81,8 +81,7 @@ CREATE TABLE IF NOT EXISTS `reff_groupmenu` (
 --
 
 INSERT INTO `reff_groupmenu` (`groupid`, `menuid`, `isView`, `isAdd`, `isUpdate`, `isDelete`) VALUES
-('1', '1', b'1', b'1', b'1', b'1'),
-('1', '2', b'1', b'1', b'1', b'1');
+('1', '1', b'1', b'1', b'1', b'1');
 
 -- --------------------------------------------------------
 
@@ -96,15 +95,14 @@ CREATE TABLE IF NOT EXISTS `reff_menu` (
   `menu_url` varchar(500) NOT NULL,
   `menu_image_url` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`menuid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `reff_menu`
 --
 
 INSERT INTO `reff_menu` (`menuid`, `menu_desc`, `menu_url`, `menu_image_url`) VALUES
-(1, 'Dashboard', 'Dashboard/index', NULL),
-(2, 'GroupUser', 'User/Groupuser', NULL);
+(1, 'Dashboard', 'Dashboard/index', NULL);
 
 -- --------------------------------------------------------
 
@@ -167,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `reff_tablekey` (
 --
 
 INSERT INTO `reff_tablekey` (`tablename`, `keyfields`, `fields`, `Condition`) VALUES
-('reff_users', 'userid', 'userid,password,groupid,full_name,address,phone_number,email_address,divisionid,active', 'groupid != ''1''');
+('reff_users', 'userid', 'userid,password,groupid,full_name,address,phone_number,email_address,divisionid,active', 'userid != ''admin''');
 
 -- --------------------------------------------------------
 
@@ -194,16 +192,6 @@ CREATE TABLE IF NOT EXISTS `reff_users` (
 --
 
 INSERT INTO `reff_users` (`userid`, `password`, `groupid`, `full_name`, `address`, `phone_number`, `email_address`, `is_login`, `active`, `divisionid`) VALUES
-('10', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('11', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('2', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('3', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('4', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('5', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('6', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('7', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('8', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
-('9', 'abc', '1', 'abc', NULL, NULL, NULL, b'1', b'1', 1),
 ('super_admin', '161ebd7d45089b3446ee4e0d86dbcf92', '1', 'Super Admin', 'tes', '1234', 'a@mail.com', b'0', b'1', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

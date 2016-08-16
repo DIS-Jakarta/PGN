@@ -514,17 +514,27 @@ class Items extends CI_Controller {
 	
 	public function selectGroupUser()
 	{
+		$session_data = $this->session->userdata('logged_in');
+		// $_POST['keyfields'] = 'groupid,menuid';
+				// $_POST['menuid'] = '2';
 		$out = $this->Content->select2('SELECT * FROM  `vw_group_user`');
 		//log_message('ERROR', 'woiii sampe woiii' );
 		$keyfields = explode(',',$_POST['keyfields']);
 		$menu = $this->Content->select2("SELECT isView,isUpdate,isDelete FROM reff_groupmenu WHERE menuid = '" . $_POST['menuid'] . "' AND groupid = '" . $session_data['groupid'] . "'");
-		
+		$keyvalue = "";
+		$column = "";
 		foreach ($menu as $menup) 
 		{
 			$isView = $menup->isView;
 			$isUpdate = $menup->isUpdate;
 			$isDelete = $menup->isDelete;
 		}
+		
+		foreach ($out as $outp) 
+		{
+			$row = array();
+			$row[] = $outp->GroupName;
+			$row[] = $outp->CRUD;
 		
 		$ViewEditdelete = "";
 			if($isView == "1"){
@@ -542,6 +552,7 @@ class Items extends CI_Controller {
 			$row[] = $ViewEditdelete;
 			
 			$data[] = $row;
+		}
 		$output = array(
 						"draw" => $_POST['draw'],
 						"recordsTotal" => $this->Content->count_all($_POST['tablename']),

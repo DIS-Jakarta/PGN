@@ -66,7 +66,7 @@ class Users extends CI_Controller {
 		 //If no session, redirect to login page
 	    $this->load->view('dashboard/header');
 		$this->load->view('dashboard/navbar');
-		$this->load->view('dashboard/contentdefault');
+		$this->load->view('dashboard/login');
 		$this->load->view('dashboard/footer');
 	   } 	
 	}
@@ -75,7 +75,7 @@ class Users extends CI_Controller {
 	{	
 		 if($this->session->userdata('logged_in'))
 	   { 
-		$this->data['tablename'] = "reff_groupmenu"; 
+		$this->data['tablename'] = "VW_GROUP_USER"; 
 		$this->data['menuid'] = "2";
 		$data3['isAdd'] = $this->canAdd($this->data['groupid'],$this->data['menuid']);
 		$query = "SELECT * FROM reff_tablekey WHERE tablename = '" . $this->data['tablename'] . "'" ;
@@ -104,7 +104,7 @@ class Users extends CI_Controller {
 		 //If no session, redirect to login page
 		$this->load->view('dashboard/header');
 		$this->load->view('dashboard/navbar');
-		$this->load->view('dashboard/contentdefault');
+		$this->load->view('dashboard/login');
 		$this->load->view('dashboard/footer');
 	   } 	
 	}

@@ -47,7 +47,7 @@ Class Content extends CI_Model
 	{
 		
 		$this->db->from($tablename);
-		$i = 0;
+		//$i = 0;
 	
 		// foreach ($column as $item) 
 		// {
@@ -56,15 +56,17 @@ Class Content extends CI_Model
 			// $column[$i] = $item;
 			// $i++;
 		// }
-		
-		if(isset($_POST['order']))
+		if($column != "")
 		{
-			$this->db->order_by($tablename . '.' . $column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-		} 
-		else if(isset($this->order))
-		{
-			$order = $this->order;
-			$this->db->order_by(key($order), $order[key($order)]);
+			if(isset($_POST['order']))
+			{
+				$this->db->order_by($tablename . '.' . $column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+			} 
+			else if(isset($this->order))
+			{
+				$order = $this->order;
+				$this->db->order_by(key($order), $order[key($order)]);
+			}
 		}
 	}
 	

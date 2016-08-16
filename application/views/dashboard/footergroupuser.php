@@ -92,7 +92,9 @@
 			if(isset($tablename)){
 			echo '
 			"data": {
-			"tablename" : "' . $tablename . '"
+			"tablename" : "' . $tablename . '",
+			"keyfields" : "grouipid,menuid",
+			"menuid" : "2",
 			},';
 			}
 			?>			
