@@ -1,5 +1,7 @@
-
-<section id="main" class="column">
+<div class="main" style="border-bottom:0px;padding-top:20px;padding-bottom:0;">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row" style="padding-bottom:60px;">
 		<!--<article class="module width_full">
 			<header><h3>Stats</h3></header>
 			<div class="module_content">
@@ -81,7 +83,13 @@
             </table>
 		</div>';
 		 ?>
-		
+      <!-- /row --> 
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /main-inner --> 
+</div>
+<!-- /main -->		
 		
 		
 		<!-- Bootstrap modal -->

@@ -36,7 +36,7 @@ class Items extends CI_Controller {
 				
 				if ( $condition == "" )
 				{
-					$condition = "WHERE ";
+					$condition = " ";
 				}
 				else
 				{
@@ -531,11 +531,33 @@ class Items extends CI_Controller {
 		}
 		
 		foreach ($out as $outp) 
-		{
+		{ 
+			$menucrud = "";
+			$checked = "";
 			$row = array();
 			$row[] = $outp->GroupName;
-			$row[] = $outp->CRUD;
-		
+			$menucrud = '<input type="checkbox" name="IsViewDashboard" value="1" disabled="disabled" '; 
+			if($outp->ViewDashboard = '1')
+				$menucrud .= ' checked="checked" /> View';
+			else 
+				$menucrud .= ' /> View';
+			$menucrud .= '</br>';
+			
+			$menucrud .= '<input type="checkbox" name="IsAddDashboard" value="1" disabled="disabled" '; 
+			if($outp->AddDashboard = '1')
+				$menucrud .= ' checked="checked" /> Add';
+			else 
+				$menucrud .= ' /> Add';
+			$menucrud .= '</br>';
+			
+			$menucrud .= '<input type="checkbox" name="IsAddDashboard" value="1" disabled="disabled" '; 
+			if($outp->AddDashboard = '1')
+				$menucrud .= ' checked="checked" /> Add';
+			else 
+				$menucrud .= ' /> Add';
+			$menucrud .= '</br>';
+			
+			$row[] = $menucrud;
 		$ViewEditdelete = "";
 			if($isView == "1"){
 			$ViewEditdelete = '<td><a class="btn btn-sm btn-success" style="margin:3px;display:inline-block;width:50px;" href="javascript:void()" onclick="view(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
@@ -562,6 +584,11 @@ class Items extends CI_Controller {
 				
 		//log_message('ERROR', print_r()) );
 		echo json_encode($output);
+	}
+	
+	private function menucrud($menuname)
+	{
+		
 	}
 	
 

@@ -1,11 +1,1 @@
-CREATE VIEW vw_group_user 
-AS 
-select (CONCAT(CONCAT(c.groupid,' - '),c.description)) AS GroupName,(CONCAT(CONCAT(b.menuid,' - '),b.menu_desc)) AS MenuName,
-concat(concat(concat(concat(
-(case when (a.isView = 1) then 'Ya' else 'Tidak' end),','),
-(case when (a.isAdd = 1) then 'Ya' else 'Tidak' end),','),
-(case when (a.isUpdate = 1) then 'Ya' else 'Tidak' end),','),
-(case when (a.isDelete = 1) then 'Ya' else 'Tidak' end),'') AS CRUD 
-from ((reff_groupmenu a 
-left join reff_menu b on((a.menuid = b.menuid))) 
-left join reff_groupid c on((a.groupid = c.groupid)))
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_group_user` AS select distinct `a`.`groupid` AS `groupid`,`d`.`description` AS `GroupName`,`b`.`isView` AS `ViewDashboard`,`b`.`isAdd` AS `AddDashboard`,`b`.`isUpdate` AS `UpdateDashboard`,`b`.`isDelete` AS `DeleteDashboard`,`c`.`isView` AS `ViewData`,`c`.`isAdd` AS `AddData`,`c`.`isUpdate` AS `UpdateData`,`c`.`isDelete` AS `DeleteData` from (((`reff_groupid` `a` join `reff_groupmenu` `b` on(((`a`.`groupid` = `b`.`groupid`) and (`b`.`menuid` = 1)))) join `reff_groupmenu` `c` on(((`a`.`groupid` = `c`.`groupid`) and (`c`.`menuid` = 2)))) left join `reff_groupid` `d` on((`a`.`groupid` = `d`.`groupid`)))
