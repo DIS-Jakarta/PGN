@@ -533,31 +533,15 @@ class Items extends CI_Controller {
 		foreach ($out as $outp) 
 		{ 
 			$menucrud = "";
-			$checked = "";
 			$row = array();
 			$row[] = $outp->GroupName;
-			$menucrud = '<input type="checkbox" name="IsViewDashboard" value="1" disabled="disabled" '; 
-			if($outp->ViewDashboard = '1')
-				$menucrud .= ' checked="checked" /> View';
-			else 
-				$menucrud .= ' /> View';
-			$menucrud .= '</br>';
-			
-			$menucrud .= '<input type="checkbox" name="IsAddDashboard" value="1" disabled="disabled" '; 
-			if($outp->AddDashboard = '1')
-				$menucrud .= ' checked="checked" /> Add';
-			else 
-				$menucrud .= ' /> Add';
-			$menucrud .= '</br>';
-			
-			$menucrud .= '<input type="checkbox" name="IsAddDashboard" value="1" disabled="disabled" '; 
-			if($outp->AddDashboard = '1')
-				$menucrud .= ' checked="checked" /> Add';
-			else 
-				$menucrud .= ' /> Add';
-			$menucrud .= '</br>';
-			
+			$_menu = $this->Content->select2('SELECT menu_desc FROM reff_menu');
+			foreach($_menu as $_menup)
+			{
+			$menucrud = $this->crudfunction($_menup->menu_desc,$outp);
 			$row[] = $menucrud;
+			}
+			
 		$ViewEditdelete = "";
 			if($isView == "1"){
 			$ViewEditdelete = '<td><a class="btn btn-sm btn-success" style="margin:3px;display:inline-block;width:50px;" href="javascript:void()" onclick="view(' . "'" . $_POST['tablename'] . "'" . ',' . "'" . $_POST['keyfields'] . "'" . ',' . "'" . $keyvalue  . "'" . ');">
@@ -586,9 +570,45 @@ class Items extends CI_Controller {
 		echo json_encode($output);
 	}
 	
-	private function menucrud($menuname)
+	private function crudfunction($menuname,$outp)
 	{
 		
+		$menucrud = "";
+		$checked = "";
+		$View = 'View' . $menuname;
+		$Add = 'Add' . $menuname;
+		$Update = 'Update' . $menuname;
+		$Delete = 'Delete' . $menuname;
+			
+		$menucrud = '<input type="checkbox" name="IsView' . $menuname . '" value="1" disabled="disabled" '; 
+		if($outp->$View == '1')
+			$menucrud .= ' checked="checked" /> View';
+		else 
+			$menucrud .= ' /> View';
+		$menucrud .= '</br>';
+		
+		$menucrud .= '<input type="checkbox" name="IsAdd' . $menuname . '" value="1" disabled="disabled" '; 
+		if($outp->$Add == '1')
+			$menucrud .= ' checked="checked" /> Add';
+		else 
+			$menucrud .= ' /> Add';
+		$menucrud .= '</br>';
+		
+		$menucrud .= '<input type="checkbox" name="IsUpdate' . $menuname . '" value="1" disabled="disabled" '; 
+		if($outp->$Update == '1')
+			$menucrud .= ' checked="checked" /> Edit';
+		else 
+			$menucrud .= ' /> Edit';
+		$menucrud .= '</br>';
+		
+		$menucrud .= '<input type="checkbox" name="IsDelete' . $menuname . '" value="1" disabled="disabled" '; 
+		if($outp->$Delete == '1')
+			$menucrud .= ' checked="checked" /> Delete';
+		else 
+			$menucrud .= ' /> Delete';
+		$menucrud .= '</br>';
+		
+		return $menucrud;
 	}
 	
 

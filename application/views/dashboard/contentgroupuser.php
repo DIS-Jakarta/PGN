@@ -43,8 +43,8 @@
                     <tr>
                       <th>GROUP USER</th>
                       <th>MENU DASHBOARD</th>
-                      <!--<th>MENU USER</th>
-                      <th>MENU GROUP USER</th>
+                      <th>MENU USER</th>
+                      <!--<th>MENU GROUP USER</th>
                       <th>MENU ENTRY DATA</th>
                       <th>MENU MANAJEMEN DATA</th>
                       <th>MENU FORMULA</th>
